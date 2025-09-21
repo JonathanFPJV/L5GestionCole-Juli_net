@@ -21,6 +21,8 @@ builder.Services.AddDbContext<GestioncoleContext>(options =>
 builder.Services.AddAutoMapper(typeof(Program));
 // Registro del repositorio generico
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+// Registro de Repositorios
+builder.Services.AddScoped<IMatriculaRepository, MatriculaRepository>();
 //Registro del Unit Of Work
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //registro de los servicios

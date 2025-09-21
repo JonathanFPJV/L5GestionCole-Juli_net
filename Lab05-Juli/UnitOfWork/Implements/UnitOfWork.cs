@@ -15,6 +15,8 @@ public class UnitOfWork : IUnitOfWork
     {
         _context = context;
         _repositories = new Hashtable();
+        
+        Matriculas = new MatriculaRepository(_context);
     }
 
     public async Task<int> Complete()

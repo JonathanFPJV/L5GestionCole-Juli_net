@@ -56,4 +56,16 @@ public class MatriculaController: ControllerBase
 
         return NoContent();
     }
+    
+    [HttpGet("curso/{idCurso}/estudiantes")]
+    public async Task<ActionResult<CursoConEstudiantesDto>> GetEstudiantesByCurso(int idCurso)
+    {
+        var cursoConEstudiantes = await _service.GetEstudiantesByCursoAsync(idCurso);
+
+        if (cursoConEstudiantes == null)
+            return NotFound(new { message = $"No se encontró el curso con id {idCurso}" });
+
+        return Ok(cursoConEstudiantes);
+    }
+
 }

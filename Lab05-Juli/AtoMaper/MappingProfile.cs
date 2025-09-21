@@ -37,5 +37,13 @@ public class MappingProfile : Profile
         CreateMap<Profesore, ProfesorDto>().ReverseMap();
         CreateMap<ProfesorCreateDto, Profesore>().ReverseMap();
         CreateMap<ProfesorUpdateDto, Profesore>().ReverseMap();
+        // Estudiante -> EstudianteCursoDto
+        CreateMap<Estudiante, EstudianteCursoDto>();
+
+        // Curso -> CursoConEstudiantesDto
+        CreateMap<Curso, CursoConEstudiantesDto>()
+            .ForMember(dest => dest.Estudiantes,
+                opt => opt.MapFrom(src =>
+                    src.Matriculas.Select(m => m.IdEstudianteNavigation)));
     }
 }

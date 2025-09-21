@@ -134,3 +134,4 @@ D:\Proyect.net\Lab05-Juli\Lab05-Juli\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swa
 D:\Proyect.net\Lab05-Juli\Lab05-Juli\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\Proyect.net\Lab05-Juli\Lab05-Juli\bin\Debug\net9.0\AutoMapper.dll
 D:\Proyect.net\Lab05-Juli\Lab05-Juli\bin\Debug\net9.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Proyect.net\Lab05-Juli\Lab05-Juli\obj\Debug\net9.0\Lab05-Juli.sourcelink.json
