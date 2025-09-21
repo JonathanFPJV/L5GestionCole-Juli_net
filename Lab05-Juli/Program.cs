@@ -34,6 +34,17 @@ builder.Services.AddScoped<IEvaluacionService, EvaluacionService>();
 builder.Services.AddScoped<IMateriaService, MateriaService>();
 builder.Services.AddScoped<IMatriculaService, MatriculaService>();
 builder.Services.AddScoped<IProfesorService, ProfesorService>();
+//cors
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowNextJs",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000") // URL de tu aplicación Next.js
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
 // 3 Configurar Swagger (Swashbuckle)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -74,6 +85,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AllowNextJs");
 app.UseAuthorization();
 
 // 5 Mapear controladores (ya no usaremos WeatherForecast en minimal API)
