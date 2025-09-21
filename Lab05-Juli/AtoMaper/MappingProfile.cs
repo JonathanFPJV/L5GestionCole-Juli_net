@@ -45,5 +45,7 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.Estudiantes,
                 opt => opt.MapFrom(src =>
                     src.Matriculas.Select(m => m.IdEstudianteNavigation)));
+        //Matricular estudiantes
+        CreateMap<RegistrarEstudianteConCursosDto, Estudiante>();
     }
 }

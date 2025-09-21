@@ -67,5 +67,16 @@ public class MatriculaController: ControllerBase
 
         return Ok(cursoConEstudiantes);
     }
+    
+    //Matricula
+    [HttpPost("registrar-estudiante")]
+    public async Task<IActionResult> RegistrarEstudianteConCursos([FromBody] RegistrarEstudianteConCursosDto dto)
+    {
+        if (!ModelState.IsValid) return BadRequest(ModelState);
+
+        var estudiante = await _service.RegistrarEstudianteConCursosAsync(dto);
+
+        return CreatedAtAction(nameof(GetById), new { id = estudiante.IdEstudiante }, estudiante);
+    }
 
 }

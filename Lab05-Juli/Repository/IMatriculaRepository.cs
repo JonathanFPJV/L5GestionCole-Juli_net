@@ -6,4 +6,8 @@ public interface IMatriculaRepository
 {
     
     Task<Curso?> GetCursoConEstudiantesAsync(int idCurso);
+    Task RegistrarEstudianteConCursosAsync(
+        Estudiante estudiante,
+        IEnumerable<int> cursosIds,
+        string semestre);
 }

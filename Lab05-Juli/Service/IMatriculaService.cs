@@ -6,4 +6,5 @@ public interface IMatriculaService
 : IGenericService<MatriculaDto, MatriculaCreateDto, MatriculaUpdateDto>
 {
     Task<CursoConEstudiantesDto?> GetEstudiantesByCursoAsync(int idCurso);
+    Task<EstudianteDto> RegistrarEstudianteConCursosAsync(RegistrarEstudianteConCursosDto dto);
 }

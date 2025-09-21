@@ -28,5 +28,32 @@ public class MatriculaService:
 
         return _mapper.Map<CursoConEstudiantesDto>(curso);
     }
+    public async Task<EstudianteDto> RegistrarEstudianteConCursosAsync(RegistrarEstudianteConCursosDto dto)
+    {
+        // 1. Mapear DTO a entidad Estudiante
+        var estudiante = _mapper.Map<Estudiante>(dto);
+
+        // 2. Registrar estudiante en el contexto
+        await _unitOfWork.Repository<Estudiante>().AddAsync(estudiante);
+
+        // 3. Crear matrículas para cada curso en la lista
+        foreach (var cursoId in dto.CursosIds)
+        {
+            var matricula = new Matricula
+            {
+                IdEstudiante = estudiante.IdEstudiante,
+                IdCurso = cursoId,
+                Semestre = dto.Semestre
+            };
+
+            await _unitOfWork.Repository<Matricula>().AddAsync(matricula);
+        }
+
+        // 4. Guardar cambios
+        await _unitOfWork.Complete();
+
+        // 5. Retornar DTO de estudiante registrado
+        return _mapper.Map<EstudianteDto>(estudiante);
+    }
 
 }

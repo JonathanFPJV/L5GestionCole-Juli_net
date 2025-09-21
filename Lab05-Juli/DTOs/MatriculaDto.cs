@@ -42,3 +42,18 @@ public class CursoConEstudiantesDto
 
     public List<EstudianteCursoDto> Estudiantes { get; set; } = new();
 }
+public class RegistrarEstudianteConCursosDto
+{
+    // Datos básicos del estudiante
+    public string Nombre { get; set; } = null!;
+    public int Edad { get; set; }
+    public string? Direccion { get; set; }
+    public string? Telefono { get; set; }
+    public string? Correo { get; set; }
+
+    // Cursos en los que se matriculará
+    public List<int> CursosIds { get; set; } = new();
+
+    // Semestre de la matrícula
+    public string Semestre { get; set; } = null!;
+}
